@@ -365,6 +365,11 @@
 				"type": "string"
 			},
 			{
+				"internalType": "string",
+				"name": "_img",
+				"type": "string"
+			},
+			{
 				"internalType": "uint256",
 				"name": "_level",
 				"type": "uint256"
@@ -391,6 +396,49 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_img",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_level",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_health",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_attackPower",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_attackResist",
+				"type": "uint256"
+			}
+		],
+		"name": "createMonsterTo",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "gameOwner",
 		"outputs": [
@@ -411,6 +459,56 @@
 				"internalType": "contract IERC20",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllMonsters",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "img",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "level",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "health",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "attackPower",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "attackResist",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rewards",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NFTGame.Monster[]",
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
 		"stateMutability": "view",
@@ -491,6 +589,11 @@
 			{
 				"internalType": "string",
 				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "img",
 				"type": "string"
 			},
 			{

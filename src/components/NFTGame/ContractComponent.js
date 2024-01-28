@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NftGameABI from './NftGameAbi.json'; // Caminho para o arquivo ABI
 
-const contractAddress = '0xf0E8BEf52ff269e5a0244f77CadF9C901881c6aF';
+const contractAddress = '0x7084b6d03ddA03eb024c323a9b3328b68917b8a8';
 
 const GameDappComponent = () => {
     const [contractInstance, setContractInstance] = useState(null);
@@ -11,6 +11,7 @@ const GameDappComponent = () => {
     const [amount, setAmount] = useState(0);
     const [monsterData, setMonsterData] = useState({
         name: '',
+        img: '',
         level: 0,
         health: 0,
         attackPower: 0,
@@ -69,6 +70,7 @@ const GameDappComponent = () => {
             if (contractInstance) {
                 await contractInstance.methods.createMonster(
                     monsterData.name,
+                    monsterData.img,
                     monsterData.level,
                     monsterData.health,
                     monsterData.attackPower,
@@ -129,8 +131,7 @@ const GameDappComponent = () => {
         }
     };
 
-
-
+    
 
     return (
         <div>
@@ -153,6 +154,18 @@ const GameDappComponent = () => {
                         placeholder="Nome do Monstro"
                     />
                 </div>
+
+                <div>
+                    <label htmlFor="monsterImg">Imagem do Monstro:</label>
+                    <input
+                        type="img"
+                        id="monstrerImg"
+                        value={monsterData.img}
+                        onChange={(e) => setMonsterData({ ...monsterData, img: e.target.value })}
+                        placeholder="Img do Monstro"
+                    />
+                </div>
+                
                 <div>
                     <label htmlFor="monsterLevel">Nível do Monstro:</label>
                     <input
