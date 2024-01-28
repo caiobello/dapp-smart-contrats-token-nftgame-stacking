@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NftGameABI from './NftGameAbi.json'; // Caminho para o arquivo ABI
 
-const contractAddress = '0x7084b6d03ddA03eb024c323a9b3328b68917b8a8';
+const contractAddress = '0x57E31bE0819426611fB7eAFfC05bc4C8eBf26cbc';
 
 const GameDappComponent = () => {
     const [contractInstance, setContractInstance] = useState(null);

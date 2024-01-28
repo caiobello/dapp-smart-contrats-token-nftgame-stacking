@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import StackingContractABI from './StackingContractGameABI.json';
 
-const contractAddress = '0xc566dE4c13423dfCF53A9986E39b1af0Aeb2D25A';
+const contractAddress = '0x7bFf73B9519703C222cFd3783862Eeb28989C60f';
 
 const StackingContractGame = () => {
     const [web3, setWeb3] = useState(null);

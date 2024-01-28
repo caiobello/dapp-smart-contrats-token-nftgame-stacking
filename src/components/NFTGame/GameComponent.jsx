@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NFTGameABI from './NftGameAbi.json'; // Importe o ABI do contrato
 
-const contractAddress = '0x7084b6d03ddA03eb024c323a9b3328b68917b8a8'; // Endereço do contrato
+const contractAddress = '0x1E0a54aCe66c2ccd6eb2747972159EF9C6A0b7eF'; // Endereço do contrato
 
 const GameComponent = () => {
     const [web3, setWeb3] = useState(null);
@@ -41,9 +41,6 @@ const GameComponent = () => {
         }
     };
 
-   const showLevel = (level) => {
-        return `Nível do monstro: ${level}`;
-    };
 
     return (
         <div>
@@ -52,8 +49,8 @@ const GameComponent = () => {
             <ul>
                 {monsters.map((monster, index) => (
                     <li key={index}>
-                        <h3>Nome: {monster.name}</h3>
-                        <img src={monster.img} alt={`Imagem de ${monster.name}`} />
+                        <h3>Nome: {`${monster.name}`}</h3>
+                        <img src={`${monster.img}`} alt={`${monster.img}`} />
                         <p>Nível: {`${monster.level}`}</p>
                         <p>Vida: {`${monster.health}`}</p>
                         <p>Poder de Ataque: {`${monster.attackPower}`}</p>
