@@ -41,6 +41,10 @@ const GameComponent = () => {
         }
     };
 
+   const showLevel = (level) => {
+        return `Nível do monstro: ${level}`;
+    };
+
     return (
         <div>
             <h2>Jogo de NFTs</h2>
@@ -50,11 +54,11 @@ const GameComponent = () => {
                     <li key={index}>
                         <h3>Nome: {monster.name}</h3>
                         <img src={monster.img} alt={`Imagem de ${monster.name}`} />
-                        <p>Nível: {monster.level}</p>
-                        <p>Vida: {monster.health}</p>
-                        <p>Poder de Ataque: {monster.attackPower}</p>
-                        <p>Resistência ao Ataque: {monster.attackResist}</p>
-                        <p>Recompensas: {monster.rewards}</p>
+                        <p>Nível: {`${monster.level}`}</p>
+                        <p>Vida: {`${monster.health}`}</p>
+                        <p>Poder de Ataque: {`${monster.attackPower}`}</p>
+                        <p>Resistência ao Ataque: {`${monster.attackResist}`}</p>
+                        <p>Balanço de Recompensas: {`${monster.rewards}`}</p>
                     </li>
                 ))}
             </ul>

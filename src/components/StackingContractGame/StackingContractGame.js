@@ -86,10 +86,10 @@ const StackingContractGame = () => {
             <h1>Detalhes do Contrato de Stacking</h1>
             <p>Owner: {owner}</p>
             <p>Reward Rate Per Second: {rewardRatePerSecond}</p>
-            <p>Scale: {scale}</p>
+            <p>Scale: {`${scale}`}</p>
             <p>Token: {token}</p>
-            <p>Owner Wallet Staking Balance: {ownerStakingBalance}</p>
-            <p>Owner Wallet Rewarded Amount: {ownerRewardedAmount}</p>
+            <p>Owner Wallet Staking Balance: {`${ownerStakingBalance}`}</p>
+            <p>Owner Wallet Rewarded Amount: {`${ownerRewardedAmount}`}</p>
 
             <h3>Reivindicar Recompensas</h3>
             <button onClick={claimRewards}>Reivindicar Recompensas</button>

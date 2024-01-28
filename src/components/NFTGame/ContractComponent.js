@@ -65,6 +65,11 @@ const GameDappComponent = () => {
         }
     };
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setMonsterData({ ...monsterData, [name]: value });
+    };
+
     const handleCreateMonster = async () => {
         try {
             if (contractInstance) {
@@ -84,6 +89,8 @@ const GameDappComponent = () => {
             console.error('Erro ao chamar o método createMonster:', error);
         }
     };
+
+
 
     const handleSafeTransferFrom = async () => {
         try {
@@ -131,7 +138,7 @@ const GameDappComponent = () => {
         }
     };
 
-    
+
 
     return (
         <div>
@@ -150,7 +157,7 @@ const GameDappComponent = () => {
                         type="text"
                         id="monsterName"
                         value={monsterData.name}
-                        onChange={(e) => setMonsterData({ ...monsterData, name: e.target.value })}
+                        onChange={handleChange}
                         placeholder="Nome do Monstro"
                     />
                 </div>
@@ -158,24 +165,27 @@ const GameDappComponent = () => {
                 <div>
                     <label htmlFor="monsterImg">Imagem do Monstro:</label>
                     <input
-                        type="img"
-                        id="monstrerImg"
+                        type="text" // Alterado para "text" para aceitar URLs de imagem
+                        id="monsterImg"
+                        name="img"
                         value={monsterData.img}
-                        onChange={(e) => setMonsterData({ ...monsterData, img: e.target.value })}
-                        placeholder="Img do Monstro"
+                        onChange={handleChange}
+                        placeholder="URL da Imagem do Monstro"
                     />
                 </div>
-                
+
                 <div>
                     <label htmlFor="monsterLevel">Nível do Monstro:</label>
                     <input
                         type="number"
                         id="monsterLevel"
                         value={monsterData.level}
-                        onChange={(e) => setMonsterData({ ...monsterData, level: e.target.value })}
+                        onChange={(e) => setMonsterData({ ...monsterData, level: parseInt(e.target.value) || 0 })}
                         placeholder="Nível do Monstro"
                     />
                 </div>
+
+
                 <div>
                     <label htmlFor="monsterHealth">Vida do Monstro:</label>
                     <input
