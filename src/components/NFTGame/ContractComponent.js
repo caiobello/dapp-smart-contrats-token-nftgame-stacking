@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NftGameABI from './NftGameAbi.json'; // Caminho para o arquivo ABI
 
-const contractAddress = '0x57E31bE0819426611fB7eAFfC05bc4C8eBf26cbc';
+const contractAddress = '0x1E0a54aCe66c2ccd6eb2747972159EF9C6A0b7eF';
 
 const GameDappComponent = () => {
     const [contractInstance, setContractInstance] = useState(null);
@@ -142,6 +142,7 @@ const GameDappComponent = () => {
 
     return (
         <div>
+            <h1>Contrato do NFTGame</h1>
             <h2>Jogo de NFTs</h2>
             <div>
                 <h3>Approve</h3>
@@ -157,7 +158,7 @@ const GameDappComponent = () => {
                         type="text"
                         id="monsterName"
                         value={monsterData.name}
-                        onChange={handleChange}
+                        onChange={(e) => setMonsterData({ ...monsterData, name: e.target.value })}
                         placeholder="Nome do Monstro"
                     />
                 </div>
@@ -165,11 +166,11 @@ const GameDappComponent = () => {
                 <div>
                     <label htmlFor="monsterImg">Imagem do Monstro:</label>
                     <input
-                        type="text" // Alterado para "text" para aceitar URLs de imagem
+                        type="text"
                         id="monsterImg"
                         name="img"
                         value={monsterData.img}
-                        onChange={handleChange}
+                        onChange={(e) => setMonsterData({ ...monsterData, img: e.target.value })}
                         placeholder="URL da Imagem do Monstro"
                     />
                 </div>
@@ -185,14 +186,13 @@ const GameDappComponent = () => {
                     />
                 </div>
 
-
                 <div>
                     <label htmlFor="monsterHealth">Vida do Monstro:</label>
                     <input
                         type="number"
                         id="monsterHealth"
                         value={monsterData.health}
-                        onChange={(e) => setMonsterData({ ...monsterData, health: e.target.value })}
+                        onChange={(e) => setMonsterData({ ...monsterData, health: parseInt(e.target.value) || 0 })}
                         placeholder="Vida do Monstro"
                     />
                 </div>
@@ -202,7 +202,7 @@ const GameDappComponent = () => {
                         type="number"
                         id="monsterAttackPower"
                         value={monsterData.attackPower}
-                        onChange={(e) => setMonsterData({ ...monsterData, attackPower: e.target.value })}
+                        onChange={(e) => setMonsterData({ ...monsterData, attackPower: parseInt(e.target.value) || 0 })}
                         placeholder="Poder de Ataque"
                     />
                 </div>
@@ -212,12 +212,13 @@ const GameDappComponent = () => {
                         type="number"
                         id="monsterAttackResist"
                         value={monsterData.attackResist}
-                        onChange={(e) => setMonsterData({ ...monsterData, attackResist: e.target.value })}
+                        onChange={(e) => setMonsterData({ ...monsterData, attackResist: parseInt(e.target.value) || 0 })}
                         placeholder="Resistência ao Ataque"
                     />
                 </div>
                 <button onClick={handleCreateMonster}>Criar Monstro</button>
             </div>
+
             <div>
                 <h3>Transferir de Forma Segura</h3>
                 <input type="text" value={transferData.from} onChange={(e) => setTransferData({ ...transferData, from: e.target.value })} placeholder="De" />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import GameTokenABI from './GameTokenABI.json'; // Importe o ABI do arquivo JSON
 
-const contractAddress = '0x7bFf73B9519703C222cFd3783862Eeb28989C60f'; // Substitua pelo endereço do contrato BEP20
+const contractAddress = '0x008b8F514088D1518e08031175EB7b205d2E24Da'; // Substitua pelo endereço do contrato BEP20
 
 const TokenInfo = () => {
     const [web3, setWeb3] = useState(null);
@@ -89,7 +89,8 @@ const TokenInfo = () => {
 
     return (
         <div>
-            <h1>Detalhes do Token</h1>
+            <h1>Contrato do TokenCoin</h1>
+            <h2>Detalhes do Token</h2>
             <p>Name: {name}</p>
             <p>Address Contract: {contractAddress}</p>
             <p>Symbol: {symbol}</p>
