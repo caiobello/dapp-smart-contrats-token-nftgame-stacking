@@ -27,9 +27,8 @@ const GameDappComponent = () => {
         attackerId: 0,
         defenderId: 0
     });
-    const [tokenId, setTokenId] = useState(0); // Adiciona estado para tokenId
-    const [balance, setBalance] = useState(null);
-    const [rewardsBalance, setRewardsBalance] = useState(null);
+    const [tokenId, setTokenId] = useState(0);
+
 
     useEffect(() => {
         const init = async () => {
@@ -117,7 +116,7 @@ const GameDappComponent = () => {
         }
     };
 
-    const handleClaimRewards = async () => { // Não precisa de tokenId como parâmetro, pois você já tem o estado para tokenId
+    const handleClaimRewards = async () => {
         try {
             if (contractInstance) {
                 await contractInstance.methods.claimRewards(tokenId).send({ from: accounts[0] });
@@ -129,33 +128,9 @@ const GameDappComponent = () => {
             console.error('Erro ao chamar o método claimRewards:', error);
         }
     };
-    const handleGetRewardsBalance = async () => {
-        try {
-            if (contractInstance) {
-                const rewardsBalance = await contractInstance.methods.getRewardsBalance().call();
-                console.log('Saldo de recompensas:', rewardsBalance);
-                setRewardsBalance(rewardsBalance);
-            } else {
-                console.error('Contrato não inicializado');
-            }
-        } catch (error) {
-            console.error('Erro ao chamar o método getRewardsBalance:', error);
-        }
-    };
-    
-    const handleBalanceOf = async () => {
-        try {
-            if (contractInstance) {
-                const balance = await contractInstance.methods.balanceOf(address).call();
-                console.log('Saldo do endereço:', balance);
-                setBalance(balance);
-            } else {
-                console.error('Contrato não inicializado');
-            }
-        } catch (error) {
-            console.error('Erro ao chamar o método balanceOf:', error);
-        }
-    };
+
+
+
 
     return (
         <div>
@@ -167,59 +142,59 @@ const GameDappComponent = () => {
                 <button onClick={handleApprove}>Approve</button>
             </div>
             <div>
-            <h3>Criar Monstro</h3>
-            <div>
-                <label htmlFor="monsterName">Nome do Monstro:</label>
-                <input 
-                    type="text" 
-                    id="monsterName" 
-                    value={monsterData.name} 
-                    onChange={(e) => setMonsterData({ ...monsterData, name: e.target.value })} 
-                    placeholder="Nome do Monstro" 
-                />
+                <h3>Criar Monstro</h3>
+                <div>
+                    <label htmlFor="monsterName">Nome do Monstro:</label>
+                    <input
+                        type="text"
+                        id="monsterName"
+                        value={monsterData.name}
+                        onChange={(e) => setMonsterData({ ...monsterData, name: e.target.value })}
+                        placeholder="Nome do Monstro"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="monsterLevel">Nível do Monstro:</label>
+                    <input
+                        type="number"
+                        id="monsterLevel"
+                        value={monsterData.level}
+                        onChange={(e) => setMonsterData({ ...monsterData, level: e.target.value })}
+                        placeholder="Nível do Monstro"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="monsterHealth">Vida do Monstro:</label>
+                    <input
+                        type="number"
+                        id="monsterHealth"
+                        value={monsterData.health}
+                        onChange={(e) => setMonsterData({ ...monsterData, health: e.target.value })}
+                        placeholder="Vida do Monstro"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="monsterAttackPower">Poder de Ataque:</label>
+                    <input
+                        type="number"
+                        id="monsterAttackPower"
+                        value={monsterData.attackPower}
+                        onChange={(e) => setMonsterData({ ...monsterData, attackPower: e.target.value })}
+                        placeholder="Poder de Ataque"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="monsterAttackResist">Resistência ao Ataque:</label>
+                    <input
+                        type="number"
+                        id="monsterAttackResist"
+                        value={monsterData.attackResist}
+                        onChange={(e) => setMonsterData({ ...monsterData, attackResist: e.target.value })}
+                        placeholder="Resistência ao Ataque"
+                    />
+                </div>
+                <button onClick={handleCreateMonster}>Criar Monstro</button>
             </div>
-            <div>
-                <label htmlFor="monsterLevel">Nível do Monstro:</label>
-                <input 
-                    type="number" 
-                    id="monsterLevel" 
-                    value={monsterData.level} 
-                    onChange={(e) => setMonsterData({ ...monsterData, level: e.target.value })} 
-                    placeholder="Nível do Monstro" 
-                />
-            </div>
-            <div>
-                <label htmlFor="monsterHealth">Vida do Monstro:</label>
-                <input 
-                    type="number" 
-                    id="monsterHealth" 
-                    value={monsterData.health} 
-                    onChange={(e) => setMonsterData({ ...monsterData, health: e.target.value })} 
-                    placeholder="Vida do Monstro" 
-                />
-            </div>
-            <div>
-                <label htmlFor="monsterAttackPower">Poder de Ataque:</label>
-                <input 
-                    type="number" 
-                    id="monsterAttackPower" 
-                    value={monsterData.attackPower} 
-                    onChange={(e) => setMonsterData({ ...monsterData, attackPower: e.target.value })} 
-                    placeholder="Poder de Ataque" 
-                />
-            </div>
-            <div>
-                <label htmlFor="monsterAttackResist">Resistência ao Ataque:</label>
-                <input 
-                    type="number" 
-                    id="monsterAttackResist" 
-                    value={monsterData.attackResist} 
-                    onChange={(e) => setMonsterData({ ...monsterData, attackResist: e.target.value })} 
-                    placeholder="Resistência ao Ataque" 
-                />
-            </div>
-            <button onClick={handleCreateMonster}>Criar Monstro</button>
-        </div>
             <div>
                 <h3>Transferir de Forma Segura</h3>
                 <input type="text" value={transferData.from} onChange={(e) => setTransferData({ ...transferData, from: e.target.value })} placeholder="De" />
@@ -238,18 +213,8 @@ const GameDappComponent = () => {
                 <input type="number" value={tokenId} onChange={(e) => setTokenId(e.target.value)} placeholder="ID do Token" />
                 <button onClick={handleClaimRewards}>Reivindicar Recompensas</button>
             </div>
-            <div>
-                <h3>Consultar Saldo de Tokens</h3>
-                <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Endereço" />
-                <button onClick={handleBalanceOf}>Consultar Saldo</button>
-                {balance && <p>Saldo do endereço: {balance}</p>}
-            </div>
-            <div>
-                <h3>Consultar Saldo de Recompensas</h3>
-                <input type="number" value={tokenId} onChange={(e) => setTokenId(e.target.value)} placeholder="ID do Token" />
-                <button onClick={handleGetRewardsBalance}>Consultar Saldo de Recompensas</button>
-                {rewardsBalance && <p>Saldo de recompensas: {rewardsBalance}</p>}
-            </div>
+
+
         </div>
     );
 };
