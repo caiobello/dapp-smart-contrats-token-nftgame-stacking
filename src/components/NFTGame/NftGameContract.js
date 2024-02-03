@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NftGameABI from './NftGameAbi.json'; // Caminho para o arquivo ABI
+import './NftGameContract.css'; // Importa o arquivo CSS
 
-const contractAddress = '0x1E0a54aCe66c2ccd6eb2747972159EF9C6A0b7eF';
 
-const GameDappComponent = () => {
+const nftContactAdress = '0xC3c6b911A2D5B8fAe784B672Da6a31E256713128';
+
+const NftGameContract = () => {
     const [contractInstance, setContractInstance] = useState(null);
     const [accounts, setAccounts] = useState([]);
     const [address, setAddress] = useState('');
@@ -39,7 +41,7 @@ const GameDappComponent = () => {
                     await window.ethereum.enable();
                     const accounts = await web3Instance.eth.getAccounts();
                     setAccounts(accounts);
-                    const contract = new web3Instance.eth.Contract(NftGameABI, contractAddress);
+                    const contract = new web3Instance.eth.Contract(NftGameABI, nftContactAdress);
                     setContractInstance(contract);
                 } else {
                     console.error('Por favor, instale o MetaMask!');
@@ -52,23 +54,7 @@ const GameDappComponent = () => {
         init();
     }, []);
 
-    const handleApprove = async () => {
-        try {
-            if (contractInstance) {
-                await contractInstance.methods.approve(address, amount).send({ from: accounts[0] });
-                console.log('Método approve chamado com sucesso');
-            } else {
-                console.error('Contrato não inicializado');
-            }
-        } catch (error) {
-            console.error('Erro ao chamar o método approve:', error);
-        }
-    };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setMonsterData({ ...monsterData, [name]: value });
-    };
 
     const handleCreateMonster = async () => {
         try {
@@ -145,12 +131,7 @@ const GameDappComponent = () => {
             <h1>Contrato do NFTGame</h1>
             <h2>Jogo de NFTs</h2>
             <div>
-                <h3>Approve</h3>
-                <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Endereço" />
-                <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Quantidade" />
-                <button onClick={handleApprove}>Approve</button>
-            </div>
-            <div>
+            <p>Nft Address Contract: {nftContactAdress}</p>
                 <h3>Criar Monstro</h3>
                 <div>
                     <label htmlFor="monsterName">Nome do Monstro:</label>
@@ -243,4 +224,4 @@ const GameDappComponent = () => {
     );
 };
 
-export default GameDappComponent;
+export default NftGameContract;

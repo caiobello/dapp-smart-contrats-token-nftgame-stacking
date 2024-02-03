@@ -1,8 +1,9 @@
 import React from 'react';
 import TokenInfo from './components/TokenInfo/TokenInfo';
 import StackingContractGame from './components/StackingContractGame/StackingContractGame';
-import ContractComponent from './components/NFTGame/ContractComponent';
-import GameComponent from './components/NFTGame/GameComponent';
+import NftGameContract from './components/NFTGame/NftGameContract';
+import GameComponent from './components/GetAllNft/GetAllNft';
+import RandomBattleComponent from './components/RandomBattle/RandomBattleComponent';
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
         <h1>Minha DApp</h1>
       </header>
       <main>
+        <RandomBattleComponent/>
         <GameComponent/>
-        <ContractComponent/>
+        <NftGameContract/>
         <StackingContractGame/>
         <TokenInfo />
       </main>

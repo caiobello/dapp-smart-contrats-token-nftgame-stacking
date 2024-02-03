@@ -1,0 +1,66 @@
+/* Estilos para o contêiner principal */
+.GameDappComponent {
+    margin: 20px;
+  }
+  
+  /* Estilos para os títulos */
+  h1, h2, h3 {
+    color: #333;
+  }
+  
+  /* Estilos para os campos de entrada e botões */
+  input[type="text"],
+  input[type="number"],
+  button {
+    margin: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Estilos para os botões */
+  button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para os campos de entrada */
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  /* Estilos para os blocos de configuração */
+  .config-block {
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para o contêiner dos blocos de configuração */
+  .config-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Estilos para o bloco de configuração individual */
+  .config-block {
+    flex: 1 1 300px;
+    margin-right: 20px;
+  }
+  
+  /* Estilos para os botões de ação */
+  .action-button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 10px;
+  }
+  

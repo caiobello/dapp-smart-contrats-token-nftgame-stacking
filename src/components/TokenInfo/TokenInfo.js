@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import GameTokenABI from './GameTokenABI.json'; // Importe o ABI do arquivo JSON
 
-const contractAddress = '0x008b8F514088D1518e08031175EB7b205d2E24Da'; // Substitua pelo endereço do contrato BEP20
+const contractTokenAdress = '0x027FbeD3AdE1B83FD440f360093f7B934FEba96d'; // Substitua pelo endereço do contrato BEP20
 
 const TokenInfo = () => {
     const [web3, setWeb3] = useState(null);
@@ -23,7 +23,7 @@ const TokenInfo = () => {
                 setWeb3(web3Instance);
                 try {
                     await window.ethereum.enable();
-                    const contract = new web3Instance.eth.Contract(GameTokenABI, contractAddress);
+                    const contract = new web3Instance.eth.Contract(GameTokenABI, contractTokenAdress);
                     setContractInstance(contract);
 
                     const name = await contract.methods.name().call();
@@ -92,7 +92,7 @@ const TokenInfo = () => {
             <h1>Contrato do TokenCoin</h1>
             <h2>Detalhes do Token</h2>
             <p>Name: {name}</p>
-            <p>Address Contract: {contractAddress}</p>
+            <p>Address Contract: {contractTokenAdress}</p>
             <p>Symbol: {symbol}</p>
             <p>Decimals: {decimals}</p>
             <p>Total Supply: {totalSupply.toLocaleString('pt-BR')}</p>

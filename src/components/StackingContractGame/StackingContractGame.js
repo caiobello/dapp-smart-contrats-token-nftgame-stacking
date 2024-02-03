@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import StackingContractABI from './StackingContractGameABI.json';
 
-const contractAddress = '0x7bFf73B9519703C222cFd3783862Eeb28989C60f';
+const stackingContractAdress = '0xa9D997fE495b0039d1e352fE43Abdad361400A4f';
 
 const StackingContractGame = () => {
     const [web3, setWeb3] = useState(null);
@@ -23,7 +23,7 @@ const StackingContractGame = () => {
                     const web3Instance = new Web3(window.ethereum);
                     setWeb3(web3Instance);
                     await window.ethereum.enable();
-                    const contract = new web3Instance.eth.Contract(StackingContractABI, contractAddress);
+                    const contract = new web3Instance.eth.Contract(StackingContractABI, stackingContractAdress);
                     setContractInstance(contract);
 
                     const accounts = await web3Instance.eth.getAccounts();
@@ -85,9 +85,9 @@ const StackingContractGame = () => {
         <div>
             <h1>Detalhes do Contrato de Stacking</h1>
             <p>Owner: {owner}</p>
-            <p>Reward Rate Per Second: {rewardRatePerSecond}</p>
+            <p>Reward Rate Per Second: {`${rewardRatePerSecond}`}</p>
             <p>Scale: {`${scale}`}</p>
-            <p>Token: {token}</p>
+            <p>Token: {`${token}`}</p>
             <p>Owner Wallet Staking Balance: {`${ownerStakingBalance}`}</p>
             <p>Owner Wallet Rewarded Amount: {`${ownerRewardedAmount}`}</p>
 

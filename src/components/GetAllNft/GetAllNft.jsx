@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import NFTGameABI from './NftGameAbi.json'; // Importe o ABI do contrato
 
-const contractAddress = '0x1E0a54aCe66c2ccd6eb2747972159EF9C6A0b7eF'; // Endereço do contrato
+
+const nftContractAdress = '0xC3c6b911A2D5B8fAe784B672Da6a31E256713128'; // Endereço do contrato
 
 const GameComponent = () => {
     const [web3, setWeb3] = useState(null);
@@ -17,7 +18,7 @@ const GameComponent = () => {
                 try {
                     // Substitua ethereum.enable() por eth_requestAccounts
                     await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    const contract = new web3Instance.eth.Contract(NFTGameABI, contractAddress);
+                    const contract = new web3Instance.eth.Contract(NFTGameABI, nftContractAdress);
                     setContractInstance(contract);
                 } catch (error) {
                     console.error('Erro ao inicializar Web3 e contrato:', error);
